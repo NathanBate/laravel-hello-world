@@ -22,7 +22,12 @@ use App\Http\Controllers\HelloController;
 Route::get('/hello', [ HelloController::class, 'index']);
 Route::get('/hello/{customName}', [HelloController::class, 'name']);
 Route::get('/hello/submit/name', function() {
-   return View('hello.submit-name');
+    return View('hello.submit-name');
 });
 Route::post('/hello/add/name', [HelloController::class, 'addName']);
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
